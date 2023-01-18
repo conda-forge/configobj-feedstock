@@ -1,36 +1,40 @@
-{% set version = "5.0.6" %}
+{% set name = "configobj" %}
+{% set version = "5.0.7" %}
 
 package:
-  name: configobj
+  name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/c/configobj/configobj-{{ version }}.tar.gz
-  sha256: a2f5650770e1c87fb335af19a9b7eb73fc05ccf22144eb68db7d00cd2bcb0902
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/configobj-{{ version }}.tar.gz
+  sha256: a4f856ffc73ebbc44c3830326a7c75ddcdb5941216030fc2115220e913a9939d
 
 build:
-  number: 0
   noarch: python
-  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
+    - python >=3.6
     - pip
-    - python
-    - six
   run:
-    - python
+    - python >=3.6
     - six
 
 test:
   imports:
     - configobj
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/DiffSK/configobj
+  summary: Config file reading, writing and validation.
   license: BSD-3-Clause
-  license_file: '{{ environ["RECIPE_DIR"] }}/LICENSE'
-  summary: Config file reading, writing and validation
+  license_file: LICENSE
 
 extra:
   recipe-maintainers:
