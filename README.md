@@ -7,7 +7,7 @@ Package license: BSD-3-Clause
 
 Feedstock license: [BSD-3-Clause](https://github.com/conda-forge/configobj-feedstock/blob/main/LICENSE.txt)
 
-Summary: Config file reading, writing and validation
+Summary: Config file reading, writing and validation.
 
 Current build status
 ====================
